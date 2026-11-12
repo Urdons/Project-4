@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public Camera camera;
-
     public float cameraDistance = 10f;
     private Vector3 cameraRotation = new Vector3(0, 0, 0);
 
@@ -49,6 +48,12 @@ public class Player : MonoBehaviour
         Vector2 horizontalVelocity = new Vector2(velocity.x + (movement.x - velocity.x) * friction, velocity.z + (movement.y - velocity.z) * friction);
         velocity.x = horizontalVelocity.x;
         velocity.z = horizontalVelocity.y;
+
+        if (transform.position.y < -20)
+        {
+            velocity = Vector3.zero;
+            transform.position = new Vector3(0, 5, 0);
+        }
     }
 
     void Update()
@@ -70,6 +75,6 @@ public class Player : MonoBehaviour
         cameraOffset = new Vector3(cameraOffset.x * -MathF.Sin(math.radians(cameraRotation.y)), cameraOffset.y, cameraOffset.z * -MathF.Cos(math.radians(cameraRotation.y)));
         cameraOffset *= cameraDistance;
 
-        camera.transform.position = characterController.transform.position + cameraOffset;
+        camera.transform.position = characterController.transform.position + new Vector3(0, 2, 0) + cameraOffset;
     }
 }
