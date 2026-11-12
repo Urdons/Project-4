@@ -17,7 +17,7 @@ public class SinkingPlatform : MonoBehaviour
     {
         if(touchingPlayer)
         {
-            offset.y -= Time.deltaTime * 0.5f;
+            offset.y -= Time.deltaTime;
         }
         else
         {
