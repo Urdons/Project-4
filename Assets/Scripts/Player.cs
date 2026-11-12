@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime);
 
         Vector2 mouseMovement = mouse.action.ReadValue<Vector2>();
-        cameraRotation += new Vector3(mouseMovement.y, mouseMovement.x, 0);
+        cameraRotation += new Vector3(mouseMovement.y / 2, mouseMovement.x, 0);
         cameraRotation = new Vector3(math.clamp(cameraRotation.x, -80, 80), cameraRotation.y, 0);
 
         camera.transform.rotation = Quaternion.Euler(cameraRotation.x, cameraRotation.y, cameraRotation.z);
